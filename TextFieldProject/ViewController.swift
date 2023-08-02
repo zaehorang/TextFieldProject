@@ -72,6 +72,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // 텍스트필드의 엔터키가 눌러졌을때 호출 (동작할지 말지 물어보는 것)
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(#function)
+        
+        //엔터키 눌렀을 때 텍스트 입력을 끝내기
+        //만약 아무 텍스스가 없으면 아래 함수가 적용된다.
+        textField.resignFirstResponder()
+        
         return true
     }
     
@@ -93,6 +98,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         print(#function)
         textField.text = ""
+        
+        //type something으로 바뀌었을때를 대비하여 원래대로 바꾸기
+        textField.placeholder = "email"
     }
     
     // 화면에 탭을 감지(UIResponder)하는 메서드
